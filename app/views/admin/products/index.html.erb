@@ -9,6 +9,20 @@
   <% @products.each do |product| %>
     <div class="bg-white rounded-lg shadow hover:shadow-lg transition transform hover:-translate-y-1 hover:scale-105">
 
+      <%= link_to admin_product_path(product), class: "block" do %>
+      <% if product.image.attached? %>
+         <%= image_tag(
+              url_for(product.image.variant(resize_to_limit: [300, 300])),
+              class: "w-full h-48 object-cover rounded-t-lg"
+            ) %>
+      <% else %>
+        <%= image_tag(
+              asset_path("no_image.jpeg"),
+              class: "w-full h-48 object-cover rounded-t-lg"
+            ) %>
+      <% end %>
+    <% end %>
+
       <div class="p-4 text-center">
         <p class="font-semibold text-gray-800 truncate"><%= product.title %></p>
         <p class="text-blue-600 font-bold mt-1"><%= product.price %> 元</p>

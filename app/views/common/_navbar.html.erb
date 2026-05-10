@@ -43,8 +43,12 @@
                       transition duration-150 z-50">
 
             <div class="bg-white border border-gray-200 rounded-lg shadow-lg">
-              <%= link_to "商品", "",
+              <%= link_to "商品", products_path,
                   class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+              <% if current_user&.admin? %>
+                <%= link_to "商品管理", admin_products_path,
+                    class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+              <% end %>
 
               <div class="border-t border-gray-100"></div>
 
