@@ -1,1 +1,4 @@
 <%= render "form", product: @product %>
+<%= form_with model: [:admin, @product], local: true, html: { multipart: true } do |f| %>
+  <%= f.file_field :image %>
+<% end %>
