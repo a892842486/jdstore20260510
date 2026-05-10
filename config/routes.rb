@@ -15,4 +15,8 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   root "welcome#index"
+
+  namespace :admin do
+    resources :products
+  end
 end
