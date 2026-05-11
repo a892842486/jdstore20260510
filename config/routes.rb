@@ -14,10 +14,23 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    member do
+      post :add_to_cart
+    end
+  end
+
   root 'products#index'
 
   namespace :admin do
     resources :products
   end
+
+  resources :carts, only: [:index] do
+    collection do
+      delete :clean
+    end
+  end
+
+  resources :cart_items
 end

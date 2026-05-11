@@ -20,9 +20,15 @@
         <p class="text-blue-600 font-bold text-xl mb-4"><%= @product.price %> 元</p>
       </div>
 
-      <div>
-        <%= link_to "加入購物車", "#",
-                    class: "px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition" %>
+      <div class="mt-4">
+        <% if @product.quantity > 0 %>
+          <%= button_to "加入購物車",
+              add_to_cart_product_path(@product),
+              method: :post,
+              class: "px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition" %>
+        <% else %>
+          <span class="text-gray-500 text-lg">已銷售一空，無法購買</span>
+        <% end %>
       </div>
     </div>
   </div>

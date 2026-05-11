@@ -1,0 +1,99 @@
+<div class="container mx-auto px-4">
+  <div class="w-full">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-2xl font-semibold">購物車</h2>
+
+      <%= button_to "清空購物車",
+          clean_carts_path,
+          method: :delete,
+          data: { turbo_confirm: "你確定要清空整個購物車嗎？" },
+          class: "text-sm text-red-500 hover:text-red-700 underline transition" %>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="min-w-full border border-gray-300">
+        <thead class="bg-gray-100">
+          <tr>
+            <th colspan="2" class="px-4 py-2 text-left border-b border-gray-300">商品資訊</th>
+            <th class="px-4 py-2 text-left border-b border-gray-300">單價</th>
+            <th class="px-4 py-2 border-b border-gray-300 text-center">數量</th>
+            <th class="px-4 py-2 border-b border-gray-300 text-center">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-2 border-b border-gray-300">
+                <%= link_to product_path(cart_item.product) do %>
+                  <% if cart_item.product.image.attached? %>
+                    <%= image_tag(cart_item.product.image.variant(resize_to_limit: [100,100]),
+                                  class: "w-24 h-24 object-cover rounded") %>
+                  <% else %>
+                    <%= image_tag("no_image.jpeg", class: "w-24 h-24 object-cover rounded") %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td class="px-4 py-2 border-b border-gray-300">
+                <%= link_to cart_item.product.title, product_path(cart_item.product),
+                            class: "text-blue-600 hover:underline" %>
+              </td>
+              <td class="px-4 py-2 border-b border-gray-300">
+                <%= number_to_currency(cart_item.product.price, unit: "元", format: "%n%u", precision: 0) %>
+              </td>
+              <td class="px-4 py-2 border-b border-gray-300">
+                <div class="flex items-center justify-center gap-2">
+
+                  <!-- 減少 -->
+                  <%= button_to cart_item_path(cart_item, cart_item: { quantity: cart_item.quantity - 1 }),
+                      method: :patch,
+                      class: "px-2 py-1 bg-gray-200 rounded hover:bg-gray-300",
+                      disabled: cart_item.quantity <= 1 do %>
+                    -
+                  <% end %>
+
+                  <!-- 數量 -->
+                  <span class="px-3 py-1 border rounded text-center w-10">
+                    <%= cart_item.quantity %>
+                  </span>
+
+                  <!-- 增加 -->
+                  <%= button_to cart_item_path(cart_item, cart_item: { quantity: cart_item.quantity + 1 }),
+                      method: :patch,
+                      class: "px-2 py-1 bg-gray-200 rounded hover:bg-gray-300",
+                      disabled: cart_item.quantity >= cart_item.product.quantity do %>
+                    +
+                  <% end %>
+
+                </div>
+              </td>
+              <td class="px-4 py-2 border-b border-gray-300 text-center">
+                <%= button_to cart_item_path(cart_item),
+                    method: :delete,
+                    data: { turbo_confirm: "你確定要刪除嗎？" },
+                    class: "text-red-500 hover:text-red-700 transition" do %>
+                🗑️
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flex justify-end mt-4">
+      <span class="text-lg font-semibold text-gray-800">
+        總計 <%= number_to_currency(render_cart_total_price(current_cart), unit: "元", precision: 0, format: "%n%u") %>
+      </span>
+    </div>
+
+    <hr class="my-6">
+
+    <div class="flex justify-end">
+<%= button_to "確認結帳",
+              "#",
+              method: :post,
+              form: { data: { turbo: false } },
+              class: "bg-red-500 text-white px-6 py-2 rounded" %>
+    </div>
+  </div>
+</div>
