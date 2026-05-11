@@ -11,4 +11,8 @@ class Cart < ApplicationRecord
   def total_price
     cart_items.sum { |ci| ci.product.price.to_i * ci.quantity }
   end
+
+  def clean!
+    cart_items.destroy_all
+  end
 end
