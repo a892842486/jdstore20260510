@@ -7,4 +7,8 @@ class Cart < ApplicationRecord
     item.quantity += 1
     item.save
   end
+
+  def total_price
+    cart_items.sum { |ci| ci.product.price.to_i * ci.quantity }
+  end
 end
