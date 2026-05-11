@@ -19,10 +19,12 @@ Rails.application.routes.draw do
       post :add_to_cart
     end
   end
-  
+
   root 'products#index'
 
   namespace :admin do
     resources :products
   end
+
+  resources :carts, only: [:index]
 end
