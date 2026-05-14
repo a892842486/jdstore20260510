@@ -29,8 +29,11 @@ Rails.application.routes.draw do
   resources :carts, only: [:index] do
     collection do
       delete :clean
+      get :checkout
     end
   end
 
   resources :cart_items
+
+  resources :orders, only: [:show, :create]
 end

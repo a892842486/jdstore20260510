@@ -4,7 +4,6 @@ class Cart < ApplicationRecord
 
   def add_product_to_cart(product)
     item = cart_items.find_or_initialize_by(product: product)
-    item.quantity += 1
     item.save
   end
 

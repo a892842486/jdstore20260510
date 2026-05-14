@@ -89,11 +89,10 @@
     <hr class="my-6">
 
     <div class="flex justify-end">
-<%= button_to "確認結帳",
-              "#",
-              method: :post,
-              form: { data: { turbo: false } },
-              class: "bg-red-500 text-white px-6 py-2 rounded" %>
+      <%= link_to "確認結帳",
+                    checkout_carts_path,
+                    form: { data: { turbo: false } },
+                    class: "bg-red-500 text-white px-6 py-2 rounded" %>
     </div>
   </div>
 </div>
