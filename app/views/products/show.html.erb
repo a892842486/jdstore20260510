@@ -24,7 +24,6 @@
         <% if @product.quantity > 0 %>
           <%= button_to "加入購物車",
               add_to_cart_product_path(@product),
-              method: :post,
               class: "px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition" %>
         <% else %>
           <span class="text-gray-500 text-lg">已銷售一空，無法購買</span>
