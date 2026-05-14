@@ -38,7 +38,12 @@ Rails.application.routes.draw do
   resources :orders, only: [:show, :create]
 
   namespace :account do
-    resources :orders, only: [:index, :show] # 只提供 index 和 show
+    resources :orders, only: [:index, :show] do
+      member do
+        post :pay_with_creditcard
+        post :pay_with_ewallet
+      end
+    end
   end
-  
+
 end

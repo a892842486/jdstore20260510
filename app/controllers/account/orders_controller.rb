@@ -11,4 +11,28 @@ class Account::OrdersController < ApplicationController
     @order = current_user.orders.find_by!(token: params[:id])
   end
 
+  def pay_with_creditcard
+    process_payment("creditcard", "使用信用卡完成付款")
+  end
+
+  def pay_with_ewallet
+    process_payment("ewallet", "使用電子錢包完成付款")
+  end
+
+  private
+
+  def process_payment(method, message)
+    @order = current_user.orders.find_by!(token: params[:id])
+
+    if @order.is_paid?
+      redirect_to account_order_path(@order), alert: "此訂單已付款"
+      return
+    end
+
+    @order.set_payment_with!(method)
+    @order.pay!
+
+    redirect_to account_order_path(@order), notice: message
+  end
+
 end
