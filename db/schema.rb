@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_14_040124) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_14_042140) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -66,6 +66,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_14_040124) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "product_lists", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "order_id", null: false
+    t.string "product_name", null: false
+    t.integer "product_price", null: false
+    t.integer "quantity", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_product_lists_on_order_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.text "description"
@@ -93,4 +103,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_14_040124) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "orders", "users"
+  add_foreign_key "product_lists", "orders"
 end
