@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_14_042140) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_14_081137) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -60,9 +60,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_14_042140) do
     t.datetime "created_at", null: false
     t.string "shipping_address", null: false
     t.string "shipping_name", null: false
+    t.string "token", null: false
     t.integer "total", default: 0, null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
+    t.index ["token"], name: "index_orders_on_token", unique: true
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
