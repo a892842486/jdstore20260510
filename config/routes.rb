@@ -36,4 +36,9 @@ Rails.application.routes.draw do
   resources :cart_items
 
   resources :orders, only: [:show, :create]
+
+  namespace :account do
+    resources :orders, only: [:index, :show] # 只提供 index 和 show
+  end
+  
 end
