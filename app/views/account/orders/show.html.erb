@@ -1,1 +1,21 @@
 <%= render "orders/order_detail", order: @order %>
+
+<div class="mt-6 flex justify-end gap-3">
+  <% if !@order.is_paid? %>
+    <%= button_to "信用卡付款",
+      pay_with_creditcard_account_order_path(@order),
+      method: :post,
+      data: { turbo_confirm: "確定要付款嗎？" },
+      class: "px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg" %>
+
+    <%= button_to "電子錢包付款",
+      pay_with_ewallet_account_order_path(@order),
+      method: :post,
+      data: { turbo_confirm: "確定要付款嗎？" },
+      class: "px-4 py-2 bg-gray-800 hover:bg-gray-900 text-white rounded-lg" %>
+  <% else %>
+    <span class="text-green-600 font-medium">
+      ✔ 已完成付款
+    </span>
+  <% end %>
+</div>
