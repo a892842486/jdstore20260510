@@ -90,7 +90,7 @@
 
     <div class="flex justify-end">
 <%= button_to "確認結帳",
-              "#",
+              checkout_carts_path,
               method: :post,
               form: { data: { turbo: false } },
               class: "bg-red-500 text-white px-6 py-2 rounded" %>
