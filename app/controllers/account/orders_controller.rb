@@ -30,7 +30,7 @@ class Account::OrdersController < ApplicationController
     end
 
     @order.set_payment_with!(method)
-    @order.pay!
+    @order.make_payment!
 
     redirect_to account_order_path(@order), notice: message
   end
