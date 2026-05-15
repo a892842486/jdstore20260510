@@ -19,6 +19,24 @@ class OrderMailer < ApplicationMailer
     )
   end
 
+  def notify_ship(order)
+    setup_order(order)
+
+    mail(
+      to: @user.email,
+      subject: "[JDStore] 您的訂單 #{@order.token} 已出貨"
+    )
+  end
+
+  def notify_cancel(order)
+    setup_order(order)
+
+    mail(
+      to: @user.email,
+      subject: "[JDStore] 您的訂單 #{@order.token} 已取消"
+    )
+  end
+
   private
 
   def setup_order(order)
