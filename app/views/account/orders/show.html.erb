@@ -18,4 +18,11 @@
       ✔ 已完成付款
     </span>
   <% end %>
+  <% if @order.may_cancel_order? %>
+    <%= button_to "申請取消訂單",
+      apply_to_cancel_account_order_path(@order),
+      method: :post,
+      data: { turbo_confirm: "確定要申請取消此訂單嗎？" },
+      class: "px-4 py-2 bg-white border border-red-500 text-red-600 rounded-lg hover:bg-red-50" %>
+  <% end %>
 </div>
