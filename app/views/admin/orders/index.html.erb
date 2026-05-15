@@ -1,0 +1,66 @@
+<h2 class="text-2xl font-bold mb-6">訂單列表</h2>
+
+<div class="overflow-x-auto bg-white shadow rounded-2xl">
+  <table class="min-w-full text-sm text-left text-gray-700">
+    <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
+      <tr>
+        <th class="px-6 py-3">#</th>
+        <th class="px-6 py-3">生成時間</th>
+        <th class="px-6 py-3">訂購者</th>
+        <th class="px-6 py-3">訂單狀態</th>
+        <th class="px-6 py-3 text-right">操作</th>
+      </tr>
+    </thead>
+
+    <tbody class="divide-y">
+      <% @orders.each do |order| %>
+        <tr class="hover:bg-gray-50">
+          <!-- ID -->
+          <td class="px-6 py-4 font-medium text-blue-600">
+            <%= link_to order.id, admin_order_path(order) %>
+          </td>
+
+          <!-- 時間 -->
+          <td class="px-6 py-4">
+            <%= l(order.created_at, format: :long) %>
+          </td>
+
+          <!-- 使用者 -->
+          <td class="px-6 py-4">
+            <%= order.user.email %>
+          </td>
+<!-- 狀態 -->
+          <td class="px-6 py-4">
+            <span class="<%= order_state_badge(order) %>">
+              <%= order_state_text(order) %>
+            </span>
+          </td>
+﻿
+          <!-- 操作 -->
+          <td class="px-6 py-4 text-right space-x-2">
+            <% if order.may_ship? %>
+              <%= button_to "出貨",
+                    ship_admin_order_path(order),
+                    method: :post,
+                    class: "btn-primary" %>
+            <% end %>
+﻿
+            <% if order.may_deliver? %>
+              <%= button_to "完成配送",
+                    shipped_admin_order_path(order),
+                    method: :post,
+                    class: "btn-success" %>
+            <% end %>
+﻿
+            <% if order.may_cancel_order? %>
+              <%= button_to "取消",
+                    cancel_admin_order_path(order),
+                    method: :post,
+                    class: "btn-danger" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
