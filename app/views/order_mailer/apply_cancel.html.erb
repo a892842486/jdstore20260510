@@ -1,0 +1,8 @@
+<p>您好，管理員</p>
+
+<p style="margin-bottom: 16px;">
+  使用者 <strong><%= @user.email %></strong> 申請取消訂單
+  <strong><%= @order.token %></strong>。
+</p>
+
+<%= render "order_mailer/order_detail", order: @order, product_lists: @product_lists %>
