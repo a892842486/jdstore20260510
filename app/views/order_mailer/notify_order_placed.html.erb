@@ -1,0 +1,11 @@
+<div style="max-width: 640px; margin: 0 auto; font-family: Arial, sans-serif; color: #111827;">
+  <p>
+    <%= t("order_mailer.greeting.user", email: @user.email) %>
+  </p>
+
+  <p style="margin-bottom: 16px;">
+    <%= t("order_mailer.notify_order_placed.message_html", order_token: @order.token).html_safe %>
+  </p>
+
+  <%= render "order_mailer/order_detail", order: @order, product_lists: @product_lists %>
+</div>

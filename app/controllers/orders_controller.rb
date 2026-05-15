@@ -5,20 +5,31 @@ class OrdersController < ApplicationController
     @order = current_user.orders.build(order_params)
     @order.total = current_cart.total_price
 
-    if @order.save
-      # 將購物車商品備份成 ProductList 快照
-      current_cart.cart_items.each do |cart_item|
-        @order.product_lists.create!(
-          product_name: cart_item.product.title,
-          product_price: cart_item.product.price,
-          quantity: cart_item.quantity
-        )
-      end
+    ActiveRecord::Base.transaction do
+      if @order.save
+        current_cart.cart_items.each do |cart_item|
+          @order.product_lists.create!(
+            product_name: cart_item.product.title,
+            product_price: cart_item.product.price,
+            quantity: cart_item.quantity
+          )
+        end
 
-      redirect_to order_path(@order)
-    else
-      render 'carts/checkout', status: :unprocessable_entity
+        # ✅ 清空購物車
+        current_cart.clean!
+
+        # ✅ 寄信（建議用 deliver_later）
+        OrderMailer.notify_order_placed(@order).deliver_later
+
+        # ✅ redirect（配合 to_param token）
+        return redirect_to account_order_path(@order.token),
+               notice: "訂單已成立，確認信已寄出！"
+      else
+        raise ActiveRecord::Rollback
+      end
     end
+
+    render 'carts/checkout', status: :unprocessable_entity
   end
 
   def show

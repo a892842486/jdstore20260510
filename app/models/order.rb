@@ -11,6 +11,10 @@ class Order < ApplicationRecord
     token
   end
 
+  def total_price
+    product_lists.sum { |item| item.product_price.to_i * item.quantity }
+  end
+
   def set_payment_with!(method)
     update!(payment_method: method)
   end

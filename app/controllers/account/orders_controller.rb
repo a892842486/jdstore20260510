@@ -19,6 +19,12 @@ class Account::OrdersController < ApplicationController
     process_payment("ewallet", "使用電子錢包完成付款")
   end
 
+  def apply_to_cancel
+    @order = current_user.orders.find_by!(token: params[:id])
+    OrderMailer.apply_cancel(@order).deliver_later
+    redirect_back fallback_location: account_order_path(@order), notice: "已提交取消申請"
+  end
+
   private
 
   def process_payment(method, message)
