@@ -1,12 +1,12 @@
 <div class="container mx-auto px-4">
   <div class="w-full">
     <div class="flex justify-between items-center mb-4">
-      <h2 class="text-2xl font-semibold">購物車</h2>
+      <h2 class="text-2xl font-semibold"><%= t("carts.title") %></h2>
 
-      <%= button_to "清空購物車",
+      <%= button_to t("carts.clear"),
           clean_carts_path,
           method: :delete,
-          data: { turbo_confirm: "你確定要清空整個購物車嗎？" },
+          data: { turbo_confirm: t("carts.confirm_clear") },
           class: "text-sm text-red-500 hover:text-red-700 underline transition" %>
     </div>
 
@@ -14,10 +14,10 @@
       <table class="min-w-full border border-gray-300">
         <thead class="bg-gray-100">
           <tr>
-            <th colspan="2" class="px-4 py-2 text-left border-b border-gray-300">商品資訊</th>
-            <th class="px-4 py-2 text-left border-b border-gray-300">單價</th>
-            <th class="px-4 py-2 border-b border-gray-300 text-center">數量</th>
-            <th class="px-4 py-2 border-b border-gray-300 text-center">操作</th>
+            <th colspan="2" class="px-4 py-2 text-left border-b border-gray-300"><%= t("carts.product_info") %></th>
+            <th class="px-4 py-2 text-left border-b border-gray-300"><%= t("carts.unit_price") %></th>
+            <th class="px-4 py-2 border-b border-gray-300 text-center"><%= t("carts.quantity") %></th>
+            <th class="px-4 py-2 border-b border-gray-300 text-center"><%= t("carts.actions") %></th>
           </tr>
         </thead>
         <tbody>
@@ -38,7 +38,7 @@
                             class: "text-blue-600 hover:underline" %>
               </td>
               <td class="px-4 py-2 border-b border-gray-300">
-                <%= number_to_currency(cart_item.product.price, unit: "元", format: "%n%u", precision: 0) %>
+                <%= number_to_currency(cart_item.product.price, unit: t("currency.unit"), format: "%n%u", precision: 0) %>
               </td>
               <td class="px-4 py-2 border-b border-gray-300">
                 <div class="flex items-center justify-center gap-2">
@@ -69,7 +69,7 @@
               <td class="px-4 py-2 border-b border-gray-300 text-center">
                 <%= button_to cart_item_path(cart_item),
                     method: :delete,
-                    data: { turbo_confirm: "你確定要刪除嗎？" },
+                    data: { turbo_confirm: t("carts.confirm_delete") },
                     class: "text-red-500 hover:text-red-700 transition" do %>
                 🗑️
                 <% end %>
@@ -82,14 +82,14 @@
 
     <div class="flex justify-end mt-4">
       <span class="text-lg font-semibold text-gray-800">
-        總計 <%= number_to_currency(render_cart_total_price(current_cart), unit: "元", precision: 0, format: "%n%u") %>
+        <%= t("carts.total") %> <%= number_to_currency(render_cart_total_price(current_cart), unit: t("currency.unit"), precision: 0, format: "%n%u") %>
       </span>
     </div>
 
     <hr class="my-6">
 
     <div class="flex justify-end">
-      <%= link_to "確認結帳",
+      <%= link_to t("carts.checkout"),
                     checkout_carts_path,
                     form: { data: { turbo: false } },
                     class: "bg-red-500 text-white px-6 py-2 rounded" %>

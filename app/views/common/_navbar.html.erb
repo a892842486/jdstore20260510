@@ -1,6 +1,6 @@
 <nav class="bg-white shadow">
   <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-    <a href="/" class="text-lg font-bold">Job Listing</a>
+    <a href="/" class="text-lg font-bold"><%= t("navbar.brand") %></a>
 
     <div class="flex items-center space-x-4">
       <div class="flex justify-end space-x-4">
@@ -38,15 +38,15 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 5h13M17 13l2 5M6 18a1 1 0 11-2 0 1 1 0 012 0zm12 0a1 1 0 11-2 0 1 1 0 012 0z"/>
           </svg>
-          購物車 (<%= current_cart.cart_items.sum(:quantity) %>)
+          <%= t("navbar.cart") %> (<%= current_cart.cart_items.sum(:quantity) %>)
         <% end %>
       </div>
 
       <% if !current_user %>
-        <%= link_to "註冊", new_user_registration_path,
+        <%= link_to t("navbar.register"), new_user_registration_path,
             class: "text-gray-700 hover:text-blue-500" %>
 
-        <%= link_to "登入", new_user_session_path,
+        <%= link_to t("navbar.login"), new_user_session_path,
             class: "text-gray-700 hover:text-blue-500" %>
 
       <% else %>
@@ -74,10 +74,10 @@
               <%= link_to t("navbar.products"), products_path,
                   class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
               <% if current_user&.admin? %>
-                <%= link_to "商品管理", admin_products_path,
+                <%= link_to t("navbar.admin_products"), admin_products_path,
                     class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
               <% end %>
-              <%= link_to "個人訂單歷史", account_orders_path,
+              <%= link_to t("navbar.order_history"), account_orders_path,
                        class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
 
               <div class="border-t border-gray-100"></div>
@@ -95,7 +95,7 @@
                           d="M17 16l4-4m0 0l-4-4m4 4H7" />
                   </svg>
 
-                登出
+                <%= t("navbar.logout") %>
               <% end %>
             </div>
           </div>

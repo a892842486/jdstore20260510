@@ -16,17 +16,17 @@
       <div>
         <h2 class="text-2xl font-bold mb-4"><%= @product.title %></h2>
         <p class="text-gray-700 mb-4"><%= @product.description %></p>
-        <p class="text-gray-900 font-semibold mb-2">數量: <%= @product.quantity %></p>
-        <p class="text-blue-600 font-bold text-xl mb-4"><%= @product.price %> 元</p>
+        <p class="text-gray-900 font-semibold mb-2"><%= t("products.quantity") %>: <%= @product.quantity %></p>
+        <p class="text-blue-600 font-bold text-xl mb-4"><%= @product.price %> <%= t("currency.unit") %></p>
       </div>
 
       <div class="mt-4">
         <% if @product.quantity > 0 %>
-          <%= button_to "加入購物車",
+          <%= button_to t("products.add_to_cart"),
               add_to_cart_product_path(@product),
               class: "px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition" %>
         <% else %>
-          <span class="text-gray-500 text-lg">已銷售一空，無法購買</span>
+          <span class="text-gray-500 text-lg"><%= t("products.sold_out") %></span>
         <% end %>
       </div>
     </div>

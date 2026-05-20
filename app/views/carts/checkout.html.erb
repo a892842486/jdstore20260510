@@ -2,16 +2,16 @@
   <div class="w-full">
 
     <!-- 標題 -->
-    <h2 class="text-2xl font-semibold mb-4">結帳</h2>
+    <h2 class="text-2xl font-semibold mb-4"><%= t("checkout.title") %></h2>
 
     <!-- 購物明細 -->
     <div class="overflow-x-auto">
       <table class="min-w-full border border-gray-300">
         <thead class="bg-gray-100">
           <tr>
-            <th class="px-4 py-2 text-left border-b border-gray-300">商品名稱</th>
-            <th class="px-4 py-2 text-left border-b border-gray-300">單價</th>
-            <th class="px-4 py-2 text-left border-b border-gray-300">數量</th>
+            <th class="px-4 py-2 text-left border-b border-gray-300"><%= t("checkout.product_name") %></th>
+            <th class="px-4 py-2 text-left border-b border-gray-300"><%= t("checkout.unit_price") %></th>
+            <th class="px-4 py-2 text-left border-b border-gray-300"><%= t("checkout.quantity") %></th>
           </tr>
         </thead>
 
@@ -25,7 +25,7 @@
               </td>
 
               <td class="px-4 py-2 border-b border-gray-300">
-                <%= number_to_currency(cart_item.product.price, unit: "元", precision: 0, format: "%n%u") %>
+                <%= number_to_currency(cart_item.product.price, unit: t("currency.unit"), precision: 0, format: "%n%u") %>
               </td>
 
               <td class="px-4 py-2 border-b border-gray-300">
@@ -40,7 +40,7 @@
     <!-- 總價 -->
     <div class="flex justify-end mt-4">
       <span class="text-lg font-semibold text-gray-800">
-        總計 <%= number_to_currency(render_cart_total_price(current_cart), unit: "元", precision: 0, format: "%n%u") %>
+        <%= t("checkout.total") %> <%= number_to_currency(render_cart_total_price(current_cart), unit: t("currency.unit"), precision: 0, format: "%n%u") %>
       </span>
     </div>
 
@@ -50,28 +50,28 @@
     <%= form_with model: @order, url: orders_path, local: true do |f| %>
 
       <!-- 訂購人 -->
-      <h3 class="text-lg font-medium mb-3">訂購人資訊</h3>
+      <h3 class="text-lg font-medium mb-3"><%= t("checkout.billing_info") %></h3>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <%= form_field_with_error(f, :billing_name, "姓名") %>
-        <%= form_field_with_error(f, :billing_address, "地址") %>
+        <%= form_field_with_error(f, :billing_name, t("checkout.name")) %>
+        <%= form_field_with_error(f, :billing_address, t("checkout.address")) %>
       </div>
 
       <!-- 收貨人 -->
-      <h3 class="text-lg font-medium mb-3">收貨人資訊</h3>
+      <h3 class="text-lg font-medium mb-3"><%= t("checkout.shipping_info") %></h3>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <%= form_field_with_error(f, :shipping_name, "姓名") %>
-        <%= form_field_with_error(f, :shipping_address, "地址") %>
+        <%= form_field_with_error(f, :shipping_name, t("checkout.name")) %>
+        <%= form_field_with_error(f, :shipping_address, t("checkout.address")) %>
       </div>
 
 
       <!-- 送出 -->
       <div class="flex justify-end">
-        <%= f.submit "生成訂單",
+        <%= f.submit t("checkout.create_order"),
               class: "bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition",
               data: {
-                disable_with: "送出中..."
+                disable_with: t("common.submitting")
               } %>
       </div>
 
