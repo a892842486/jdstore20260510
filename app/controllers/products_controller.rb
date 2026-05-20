@@ -14,10 +14,10 @@ class ProductsController < ApplicationController
 
     if cart_item
       cart_item.increment!(:quantity)
-      flash[:notice] = "已增加 #{@product.title} 的數量"
+      flash[:notice] = t("flash.products.quantity_increased", product: @product.title)
     else
       current_cart.add_product_to_cart(@product)
-      flash[:notice] = "已加入 #{@product.title} 到購物車"
+      flash[:notice] = t("flash.products.added_to_cart", product: @product.title)
     end
 
     redirect_back fallback_location: products_path

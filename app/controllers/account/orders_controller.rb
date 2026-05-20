@@ -12,17 +12,17 @@ class Account::OrdersController < ApplicationController
   end
 
   def pay_with_creditcard
-    process_payment("creditcard", "使用信用卡完成付款")
+    process_payment("creditcard", t("flash.account.orders.paid_with_creditcard"))
   end
 
   def pay_with_ewallet
-    process_payment("ewallet", "使用電子錢包完成付款")
+    process_payment("ewallet", ("flash.account.orders.paid_with_ewallet"))
   end
 
   def apply_to_cancel
     @order = current_user.orders.find_by!(token: params[:id])
     OrderMailer.apply_cancel(@order).deliver_later
-    redirect_back fallback_location: account_order_path(@order), notice: "已提交取消申請"
+    redirect_back fallback_location: account_order_path(@order), notice: t("flash.account.orders.cancel_requested")
   end
 
   private
@@ -31,7 +31,7 @@ class Account::OrdersController < ApplicationController
     @order = current_user.orders.find_by!(token: params[:id])
 
     if @order.is_paid?
-      redirect_to account_order_path(@order), alert: "此訂單已付款"
+      redirect_to account_order_path(@order), alert: t("flash.account.orders.already_paid")
       return
     end
 

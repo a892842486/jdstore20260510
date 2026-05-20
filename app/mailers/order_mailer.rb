@@ -4,7 +4,7 @@ class OrderMailer < ApplicationMailer
 
     mail(
       to: "jdstore@gmail.com",
-      subject: "[JDStore] 用戶 #{@user.email} 申請取消訂單 #{@order.token}"
+      subject: t("order_mailer.subject.apply_cancel", email: @user.email, token: @order.token)
     )
   end
 
@@ -15,7 +15,7 @@ class OrderMailer < ApplicationMailer
 
     mail(
       to: @user.email,
-      subject: "[JDstore] 訂單成立通知 - #{order.token}"
+      subject: t("order_mailer.subject.order_placed", token: @order.token)
     )
   end
 
@@ -24,7 +24,7 @@ class OrderMailer < ApplicationMailer
 
     mail(
       to: @user.email,
-      subject: "[JDStore] 您的訂單 #{@order.token} 已出貨"
+      subject: t("order_mailer.subject.shipped", token: @order.token)
     )
   end
 
@@ -33,7 +33,7 @@ class OrderMailer < ApplicationMailer
 
     mail(
       to: @user.email,
-      subject: "[JDStore] 您的訂單 #{@order.token} 已取消"
+      subject: t("order_mailer.subject.cancelled", token: @order.token)
     )
   end
 

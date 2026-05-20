@@ -14,7 +14,7 @@ class Admin::OrdersController < ApplicationController
    def ship
      @order.ship!
      OrderMailer.notify_ship(@order).deliver_later
-     redirect_back fallback_location: admin_orders_path, notice: "訂單已出貨，通知信已寄出"
+     redirect_back fallback_location: admin_orders_path, notice: t("flash.admin.orders.shipped")
    end
 
    def shipped
@@ -25,7 +25,7 @@ class Admin::OrdersController < ApplicationController
    def cancel
      @order.cancel_order!
      OrderMailer.notify_cancel(@order).deliver_later
-     redirect_back fallback_location: admin_orders_path, notice: "訂單已取消，通知信已寄出"
+     redirect_back fallback_location: admin_orders_path, notice: t("flash.admin.orders.cancelled")
    end
 
    def return

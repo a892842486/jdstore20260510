@@ -15,7 +15,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to admin_products_path, notice: "Product created"
+      redirect_to admin_products_path, notice: t("flash.admin.products.created")
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     if @product.update(product_params)
-      redirect_to admin_products_path, notice: "Product updated"
+      redirect_to admin_products_path, notice: t("flash.admin.products.updated")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -38,7 +38,7 @@ class Admin::ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    redirect_to admin_products_path, notice: "Product deleted"
+    redirect_to admin_products_path, notice: t("flash.admin.products.deleted")
   end
 
   private

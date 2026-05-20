@@ -1,31 +1,218 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  site:
+    title: "Nintendo amiibo Store (Demo)"
+
+  navbar:
+    brand: "Nintendo amiibo Store (Demo)"
+    chinese: "中文"
+    english: "EN"
+    cart: "Cart"
+    register: "Sign Up"
+    login: "Log In"
+    products: "Products"
+    admin_products: "Admin Products"
+    order_history: "Order History"
+    logout: "Log Out"
+
+  products:
+    quantity: "Quantity"
+    add_to_cart: "Add to Cart"
+    sold_out: "Sold out"
+
+    hero:
+      title: "Explore the World of Nintendo Games with amiibo"
+      subtitle: "Connect amiibo with your console and unlock more interactive gameplay experiences"
+      badge: "Rails 8 E-commerce Portfolio Project"
+
+  carts:
+    title: "Cart"
+    clear: "Clear Cart"
+    confirm_clear: "Are you sure you want to clear the entire cart?"
+    product_info: "Product Information"
+    unit_price: "Unit Price"
+    quantity: "Quantity"
+    actions: "Actions"
+    confirm_delete: "Are you sure you want to remove this item?"
+    total: "Total"
+    checkout: "Checkout"
+
+
+  checkout:
+    title: "Checkout"
+    product_name: "Product Name"
+    unit_price: "Unit Price"
+    quantity: "Quantity"
+    total: "Total"
+    billing_info: "Billing Information"
+    shipping_info: "Shipping Information"
+    name: "Name"
+    address: "Address"
+    create_order: "Place Order"
+
+  account:
+    orders:
+      index_title: "Order History"
+      order_id: "Order ID"
+      created_at: "Created At"
+      pay_with_creditcard: "Pay with Credit Card"
+      pay_with_ewallet: "Pay with E-wallet"
+      confirm_payment: "Are you sure you want to proceed with payment?"
+      paid: "Paid"
+      apply_cancel: "Request Cancellation"
+      confirm_apply_cancel: "Are you sure you want to cancel this order?"
+
+  orders:
+    detail:
+      title: "Order Details"
+      product_name: "Product Name"
+      unit_price: "Unit Price"
+      quantity: "Quantity"
+      subtotal: "Subtotal"
+      total: "Total"
+      shipping_info: "Shipping Information"
+      billing_user: "Billing Recipient"
+      shipping_user: "Shipping Recipient"
+
+  admin:
+    products:
+      index_title: "Product Management"
+      new: "+ New Product"
+      edit: "Edit"
+      delete: "Delete"
+      confirm_delete: "Are you sure you want to delete this product? This action cannot be undone."
+      create: "Create Product"
+      update: "Update Product"
+      image: "Product Image"
+
+    orders:
+      index_title: "Order Management"
+      created_at: "Created At"
+      customer: "Customer"
+      status: "Status"
+      actions: "Actions"
+      order: "Order"
+      info: "Order Information"
+      customer_info: "Customer Information"
+      mark_as_paid: "Mark as Paid"
+      ship: "Ship"
+      deliver: "Mark as Delivered"
+      cancel: "Cancel"
+      cancel_order: "Cancel Order"
+      confirm_cancel: "Are you sure you want to cancel this order?"
+
+    site_title: "Admin Panel"
+
+    sidebar:
+      products: "Products"
+      orders: "Orders"
+
+  order_mailer:
+    detail:
+      title: "Order Details"
+      order_link: "Order Link"
+      view_order: "View Order"
+      product_name: "Product Name"
+      unit_price: "Unit Price"
+      quantity: "Quantity"
+      subtotal: "Subtotal"
+      total: "Total"
+      shipping_info: "Shipping Information"
+      billing_user: "Billing Recipient"
+      shipping_user: "Shipping Recipient"
+
+    greeting:
+      admin: "Hello, Admin"
+      user: "Hello, %{email}"
+
+    apply_cancel:
+      message_html: "User <strong>%{user_email}</strong> has requested to cancel order <strong>%{order_token}</strong>."
+
+    notify_cancel:
+      message_html: "Your order <strong>%{order_token}</strong> has been cancelled."
+
+    notify_ship:
+      message_html: "Your order <strong>%{order_token}</strong> has been shipped."
+
+    notify_order_placed:
+      message_html: "Your order <strong>%{order_token}</strong> has been placed."
+
+    subject:
+      order_placed: "[JDStore] Order Confirmation - %{token}"
+      apply_cancel: "[JDStore] User %{email} requested cancellation for order %{token}"
+      shipped: "[JDStore] Your order %{token} has been shipped"
+      cancelled: "[JDStore] Your order %{token} has been cancelled"
+
+  flash:
+    account:
+      orders:
+        paid_with_creditcard: "Payment completed by credit card."
+        paid_with_ewallet: "Payment completed by e-wallet."
+        already_paid: "This order has already been paid."
+        cancel_requested: "Cancellation request has been submitted."
+
+    admin:
+      orders:
+        shipped: "Order has been shipped and the notification email has been sent."
+        cancelled: "Order has been cancelled and the notification email has been sent."
+
+      products:
+        created: "Product was created successfully."
+        updated: "Product was updated successfully."
+        deleted: "Product was deleted successfully."
+
+    auth:
+      not_authorized: "You are not authorized."
+
+    cart_items:
+      removed: "%{product} was removed from the cart."
+
+    carts:
+      cleared: "Cart has been cleared."
+
+    orders:
+      created: "Order has been placed and the confirmation email has been sent."
+
+    products:
+      quantity_increased: "Increased quantity for %{product}."
+      added_to_cart: "%{product} has been added to the cart."
+
+    welcome:
+      greeting: "Good morning! Hello!"
+
+  aasm:
+    order:
+      order_placed: "Order Placed"
+      paid: "Paid"
+      shipping: "Shipping"
+      shipped: "Delivered"
+      order_cancelled: "Cancelled"
+      good_returned: "Returned"
+
+  activerecord:
+    attributes:
+      product:
+        title: "Title"
+        description: "Description"
+        quantity: "Quantity"
+        price: "Price"
+        image: "Product Image"
+
+      order:
+        billing_name: "Billing Name"
+        billing_address: "Billing Address"
+        shipping_name: "Shipping Name"
+        shipping_address: "Shipping Address"
+
+  errors:
+    messages:
+      blank: "can't be blank"
+
+  time:
+    formats:
+      long: "%Y-%m-%d %H:%M"
+
+  currency:
+    unit: "TWD"
+
+  common:
+    submitting: "Submitting..."
