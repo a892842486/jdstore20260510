@@ -9,7 +9,7 @@
   <% @products.each do |product| %>
     <div class="bg-white rounded-lg shadow hover:shadow-lg transition transform hover:-translate-y-1 hover:scale-105">
 
-      <%= link_to admin_product_path(product), class: "block" do %>
+      <%= link_to product_path(product), class: "block" do %>
       <% if product.image.attached? %>
          <%= image_tag(
               url_for(product.image.variant(resize_to_limit: [300, 300])),
