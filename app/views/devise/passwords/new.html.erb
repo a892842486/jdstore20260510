@@ -1,16 +1,27 @@
-<h2>Forgot your password?</h2>
+<div class="mx-auto max-w-md px-4 py-12">
+  <div class="rounded-2xl bg-white p-8 shadow-lg ring-1 ring-gray-200">
+    <h2 class="mb-2 text-center text-2xl font-bold text-gray-900">Forgot your password?</h2>
+    <p class="mb-6 text-center text-sm text-gray-600">
+      Enter your email and we’ll send you reset instructions.
+    </p>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "space-y-5" }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <p><%= f.label :email %></p>
-    <p><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
+      <div>
+        <%= f.label :email, class: "mb-1 block text-sm font-medium text-gray-700" %>
+        <%= f.email_field :email,
+            autofocus: true,
+            autocomplete: "email",
+            class: "block w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 shadow-sm focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500" %>
+      </div>
+
+      <%= f.submit "Send reset instructions",
+          class: "w-full cursor-pointer rounded-lg bg-red-600 px-4 py-2 font-semibold text-white shadow-sm transition hover:bg-red-700" %>
+    <% end %>
+
+    <div class="mt-6 text-center text-sm text-gray-600">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me password reset instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
