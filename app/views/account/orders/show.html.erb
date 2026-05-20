@@ -2,27 +2,27 @@
 
 <div class="mt-6 flex justify-end gap-3">
   <% if !@order.is_paid? %>
-    <%= button_to "信用卡付款",
+    <%= button_to t("account.orders.pay_with_creditcard"),
       pay_with_creditcard_account_order_path(@order),
       method: :post,
-      data: { turbo_confirm: "確定要付款嗎？" },
+      data: { turbo_confirm: t("account.orders.confirm_payment") },
       class: "px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg" %>
 
-    <%= button_to "電子錢包付款",
+    <%= button_to t("account.orders.pay_with_ewallet"),
       pay_with_ewallet_account_order_path(@order),
       method: :post,
-      data: { turbo_confirm: "確定要付款嗎？" },
+      data: { turbo_confirm: t("account.orders.confirm_payment") },
       class: "px-4 py-2 bg-gray-800 hover:bg-gray-900 text-white rounded-lg" %>
   <% else %>
     <span class="text-green-600 font-medium">
-      ✔ 已完成付款
+      ✔ <%= t("account.orders.paid") %>
     </span>
   <% end %>
   <% if @order.may_cancel_order? %>
-    <%= button_to "申請取消訂單",
+    <%= button_to t("account.orders.apply_cancel"),
       apply_to_cancel_account_order_path(@order),
       method: :post,
-      data: { turbo_confirm: "確定要申請取消此訂單嗎？" },
+      data: { turbo_confirm: t("account.orders.confirm_apply_cancel") },
       class: "px-4 py-2 bg-white border border-red-500 text-red-600 rounded-lg hover:bg-red-50" %>
   <% end %>
 </div>
