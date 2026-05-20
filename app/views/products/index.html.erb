@@ -1,3 +1,28 @@
+<!-- Hero Banner -->
+<div class="relative mb-8 rounded-2xl overflow-hidden shadow-lg">
+
+  <%= image_tag "banner.jpg",
+      class: "w-full h-[320px] object-cover" %>
+
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-black/40 flex flex-col justify-center px-10">
+
+    <h1 class="text-4xl font-bold text-white mb-3">
+      用 amiibo 探索任天堂遊戲世界
+    </h1>
+
+    <p class="text-lg text-gray-200 mb-2">
+      將 amiibo 與主機連動，體驗更多遊戲互動樂趣
+    </p>
+
+    <p class="text-sm text-gray-300">
+      Rails 8 Ecommerce Demo Project
+    </p>
+
+  </div>
+</div>
+
+<!-- Product Grid -->
 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 p-4">
   <% @products.each do |product| %>
     <div class="bg-white rounded-lg shadow hover:shadow-lg transition transform hover:-translate-y-1 hover:scale-105">
