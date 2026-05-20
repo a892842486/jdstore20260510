@@ -1,5 +1,217 @@
 zh-TW:
+  site:
+    title: "任天堂 amiibo 專賣（Demo）"
+
   navbar:
-    products: "商品"
+    brand: "任天堂 amiibo 專賣（Demo）"
     chinese: "中文"
     english: "EN"
+    cart: "購物車"
+    register: "註冊"
+    login: "登入"
+    products: "商品"
+    admin_products: "後台商品"
+    order_history: "訂單歷史"
+    logout: "登出"
+
+  products:
+    quantity: "數量"
+    add_to_cart: "加入購物車"
+    sold_out: "已銷售一空，無法購買"
+
+    hero:
+      title: "用 amiibo 探索任天堂遊戲世界"
+      subtitle: "將 amiibo 與主機連動，體驗更多遊戲互動樂趣"
+      badge: "Rails 8 電商網站作品展示"
+
+
+  carts:
+    title: "購物車"
+    clear: "清空購物車"
+    confirm_clear: "你確定要清空整個購物車嗎？"
+    product_info: "商品資訊"
+    unit_price: "單價"
+    quantity: "數量"
+    actions: "操作"
+    confirm_delete: "你確定要刪除嗎？"
+    total: "總計"
+    checkout: "確認結帳"
+
+  checkout:
+    title: "結帳"
+    product_name: "商品名稱"
+    unit_price: "單價"
+    quantity: "數量"
+    total: "總計"
+    billing_info: "訂購人資訊"
+    shipping_info: "收貨人資訊"
+    name: "姓名"
+    address: "地址"
+    create_order: "生成訂單"
+
+  account:
+    orders:
+      index_title: "訂單歷史"
+      order_id: "訂單編號"
+      created_at: "生成時間"
+      pay_with_creditcard: "信用卡付款"
+      pay_with_ewallet: "電子錢包付款"
+      confirm_payment: "確定要付款嗎？"
+      paid: "已完成付款"
+      apply_cancel: "申請取消訂單"
+      confirm_apply_cancel: "確定要申請取消此訂單嗎？"
+
+  orders:
+    detail:
+      title: "訂單明細"
+      product_name: "商品名稱"
+      unit_price: "單價"
+      quantity: "數量"
+      subtotal: "小計"
+      total: "總計"
+      shipping_info: "寄送資訊"
+      billing_user: "訂購人"
+      shipping_user: "收件人"
+
+  admin:
+    products:
+      index_title: "商品管理"
+      new: "＋ 新增商品"
+      edit: "編輯"
+      delete: "刪除"
+      confirm_delete: "確定要刪除這個商品嗎？此操作無法復原！"
+      create: "建立商品"
+      update: "更新商品"
+      image: "商品圖片"
+
+    orders:
+      index_title: "訂單管理"
+      created_at: "建立時間"
+      customer: "訂購者"
+      status: "狀態"
+      actions: "操作"
+      order: "訂單"
+      info: "訂單資訊"
+      customer_info: "顧客資訊"
+      mark_as_paid: "標記已付款"
+      ship: "出貨"
+      deliver: "完成配送"
+      cancel: "取消"
+      cancel_order: "取消訂單"
+      confirm_cancel: "確定要取消嗎？"
+
+    site_title: "後台管理"
+    sidebar:
+      products: "商品"
+      orders: "訂單"
+
+  order_mailer:
+    detail:
+      title: "訂單明細"
+      order_link: "訂單連結"
+      view_order: "查看訂單"
+      product_name: "商品名稱"
+      unit_price: "單價"
+      quantity: "數量"
+      subtotal: "小計"
+      total: "總計"
+      shipping_info: "寄送資訊"
+      billing_user: "訂購人"
+      shipping_user: "收件人"
+
+    greeting:
+      admin: "您好，管理員"
+      user: "您好，%{email}"
+
+    apply_cancel:
+      message_html: "使用者 <strong>%{user_email}</strong> 申請取消訂單 <strong>%{order_token}</strong>。"
+
+    notify_cancel:
+      message_html: "您的訂單 <strong>%{order_token}</strong> 已取消。"
+
+    notify_ship:
+      message_html: "您的訂單 <strong>%{order_token}</strong> 已出貨。"
+
+    notify_order_placed:
+      message_html: "您的訂單 <strong>%{order_token}</strong> 已成立。"
+
+    subject:
+      order_placed: "[JDStore] 訂單成立通知 - %{token}"
+      apply_cancel: "[JDStore] 用戶 %{email} 申請取消訂單 %{token}"
+      shipped: "[JDStore] 您的訂單 %{token} 已出貨"
+      cancelled: "[JDStore] 您的訂單 %{token} 已取消"
+
+  flash:
+    account:
+      orders:
+        paid_with_creditcard: "使用信用卡完成付款"
+        paid_with_ewallet: "使用電子錢包完成付款"
+        already_paid: "此訂單已付款"
+        cancel_requested: "已提交取消申請"
+
+    admin:
+      orders:
+        shipped: "訂單已出貨，通知信已寄出"
+        cancelled: "訂單已取消，通知信已寄出"
+
+      products:
+        created: "商品已建立"
+        updated: "商品已更新"
+        deleted: "商品已刪除"
+
+    auth:
+      not_authorized: "您沒有權限執行此操作"
+
+    cart_items:
+      removed: "成功將 %{product} 從購物車刪除！"
+
+    carts:
+      cleared: "已清空購物車"
+
+    orders:
+      created: "訂單已成立，確認信已寄出！"
+
+    products:
+      quantity_increased: "已增加 %{product} 的數量"
+      added_to_cart: "已加入 %{product} 到購物車"
+
+    welcome:
+      greeting: "早安！你好！"
+
+  aasm:
+    order:
+      order_placed: "訂單成立"
+      paid: "已付款"
+      shipping: "配送中"
+      shipped: "已送達"
+      order_cancelled: "已取消"
+      good_returned: "已退貨"
+
+  activerecord:
+    attributes:
+      product:
+        title: "商品名稱"
+        description: "商品描述"
+        quantity: "庫存"
+        price: "價格"
+        image: "商品圖片"
+
+      order:
+        billing_name: "訂購人姓名"
+        billing_address: "訂購人地址"
+        shipping_name: "收件人姓名"
+        shipping_address: "收件人地址"
+
+  errors:
+    messages:
+      blank: "不能為空白"
+
+  time:
+    formats:
+      long: "%Y-%m-%d %H:%M"
+
+  currency:
+    unit: "元"
+
+  common:
+    submitting: "送出中..."
