@@ -3,7 +3,7 @@
   <!-- 標題 + 狀態 -->
   <div class="flex justify-between items-center mb-6">
     <h1 class="text-2xl font-bold">
-      訂單 #<%= @order.id %>
+      <%= t("admin.orders.order") %> #<%= @order.id %>
     </h1>
 
     <!-- 狀態 -->
@@ -15,18 +15,18 @@
   <!-- 基本資訊 -->
   <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
     <div class="p-4 border rounded-lg">
-      <p class="font-semibold mb-2">訂單資訊</p>
-      <p>建立時間：<%= @order.created_at.strftime("%Y-%m-%d %H:%M") %></p>
-      <p>狀態：<%= @order.aasm_state.humanize %></p>
+      <p class="font-semibold mb-2"><%= t("admin.orders.info") %></p>
+      <p><%= t("admin.orders.created_at") %>：<%= @order.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+      <p><%= t("admin.orders.status") %>：<%= @order.aasm_state.humanize %></p>
     </div>
 
     <div class="p-4 border rounded-lg">
-      <p class="font-semibold mb-2">顧客資訊</p>
+      <p class="font-semibold mb-2"><%= t("admin.orders.customer_info") %></p>
       <p><%= @order.billing_name %></p>
       <p><%= @order.billing_address %></p>
     </div>
   </div>
-  
+
   <!-- ⭐ 共用 partial -->
   <%= render "orders/order_detail", order: @order %>
 
@@ -34,7 +34,7 @@
   <div class="mt-6 flex gap-3 justify-end">
 
     <% if @order.may_make_payment? %>
-      <%= button_to "標記已付款",
+      <%= button_to t("admin.orders.mark_as_paid"),
           "#",
           method: :post,
           disabled: true,
@@ -42,24 +42,24 @@
     <% end %>
 
     <% if @order.may_ship? %>
-      <%= button_to "出貨",
+      <%= button_to t("admin.orders.ship"),
           ship_admin_order_path(@order),
           method: :post,
           class: "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" %>
     <% end %>
 
     <% if @order.may_deliver? %>
-      <%= button_to "完成配送",
+      <%= button_to t("admin.orders.deliver"),
           shipped_admin_order_path(@order),
           method: :post,
           class: "px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700" %>
     <% end %>
 
     <% if @order.may_cancel_order? %>
-      <%= button_to "取消訂單",
+      <%= button_to t("admin.orders.cancel_order"),
           cancel_admin_order_path(@order),
           method: :post,
-          data: { turbo_confirm: "確定要取消嗎？" },
+          data: { turbo_confirm: t("admin.orders.confirm_cancel") },
           class: "px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700" %>
     <% end %>
 

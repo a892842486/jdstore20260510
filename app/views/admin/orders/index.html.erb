@@ -1,14 +1,14 @@
-<h2 class="text-2xl font-bold mb-6">訂單列表</h2>
+<h2 class="text-2xl font-bold mb-6"><%= t("admin.orders.index_title") %></h2>
 
 <div class="overflow-x-auto bg-white shadow rounded-2xl">
   <table class="min-w-full text-sm text-left text-gray-700">
     <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
       <tr>
         <th class="px-6 py-3">#</th>
-        <th class="px-6 py-3">生成時間</th>
-        <th class="px-6 py-3">訂購者</th>
-        <th class="px-6 py-3">訂單狀態</th>
-        <th class="px-6 py-3 text-right">操作</th>
+        <th class="px-6 py-3"><%= t("admin.orders.created_at") %></th>
+        <th class="px-6 py-3"><%= t("admin.orders.customer") %></th>
+        <th class="px-6 py-3"><%= t("admin.orders.status") %></th>
+        <th class="px-6 py-3 text-right"><%= t("admin.orders.actions") %></th>
       </tr>
     </thead>
 
@@ -39,23 +39,24 @@
           <!-- 操作 -->
           <td class="px-6 py-4 text-right space-x-2">
             <% if order.may_ship? %>
-              <%= button_to "出貨",
+              <%= button_to t("admin.orders.ship"),
                     ship_admin_order_path(order),
                     method: :post,
                     class: "btn-primary" %>
             <% end %>
 ﻿
             <% if order.may_deliver? %>
-              <%= button_to "完成配送",
+              <%= button_to t("admin.orders.deliver"),
                     shipped_admin_order_path(order),
                     method: :post,
                     class: "btn-success" %>
             <% end %>
 ﻿
             <% if order.may_cancel_order? %>
-              <%= button_to "取消",
+              <%= button_to t("admin.orders.cancel"),
                     cancel_admin_order_path(order),
                     method: :post,
+                    data: { turbo_confirm: t("admin.orders.confirm_cancel") },
                     class: "btn-danger" %>
             <% end %>
           </td>

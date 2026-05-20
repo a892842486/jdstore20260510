@@ -1,4 +1,4 @@
-<h2 class="text-2xl font-semibold mb-6"><%= product.new_record? ? "New Product" : "Edit Product" %></h2>
+<h2 class="text-2xl font-semibold mb-6"><%= product.new_record? ? t("admin.products.new") : t("admin.products.edit") %></h2>
 
 <%= form_with model: [:admin, product], local: true, html: { multipart: true } do |f| %>
   <!-- Title -->
@@ -27,7 +27,7 @@
 
   <!-- Image Upload + Preview -->
   <div class="mb-4">
-    <%= f.label :image, "商品圖片", class: "block text-sm font-medium text-gray-700 mb-1" %>
+    <%= f.label :image, t("admin.products.image"), class: "block text-sm font-medium text-gray-700 mb-1" %>
     <%= f.file_field :image, id: "product_image_input", class: "cursor-pointer px-3 py-2 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200" %>
 
     <div class="mt-2">
@@ -42,9 +42,9 @@
 
   <!-- Submit -->
   <div>
-    <%= f.submit product.new_record? ? "Create Product" : "Update Product",
+    <%= f.submit product.new_record? ? t("admin.products.create") : t("admin.products.update"),
         class: "px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition",
-        data: { disable_with: "Submitting..." } %>
+        data: { disable_with: t("common.submitting") } %>
   </div>
 
   <script>
