@@ -4,6 +4,34 @@
 
     <div class="flex items-center space-x-4">
       <div class="flex justify-end space-x-4">
+        <div class="flex justify-end space-x-4">
+          <% current_locale = I18n.locale %>
+
+          <% zh_path =
+              if controller_name == "orders" && action_name == "create"
+                checkout_carts_path(locale: "zh-TW")
+              else
+                url_for(locale: "zh-TW")
+              end
+          %>
+
+          <% en_path =
+              if controller_name == "orders" && action_name == "create"
+                checkout_carts_path(locale: "en")
+              else
+                url_for(locale: "en")
+              end
+          %>
+
+          <div class="flex items-center rounded-full border border-gray-300 bg-white p-1 text-sm shadow-sm">
+            <%= link_to "中文",
+                zh_path,
+                class: "rounded-full px-3 py-1 transition #{current_locale == :'zh-TW' ? 'bg-blue-500 text-white shadow-sm' : 'text-gray-500 hover:text-gray-900'}" %>
+
+            <%= link_to "EN",
+                en_path,
+                class: "rounded-full px-3 py-1 transition #{current_locale == :en ? 'bg-blue-500 text-white shadow-sm' : 'text-gray-500 hover:text-gray-900'}" %>
+          </div>
         <%= link_to carts_path, class: "flex items-center text-gray-700 hover:text-gray-900" do %>
           <!-- SVG shopping cart icon -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
