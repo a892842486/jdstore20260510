@@ -14,6 +14,23 @@ zh-TW:
     order_history: "訂單歷史"
     logout: "登出"
 
+  devise:
+    sessions:
+      signed_in: "成功登入"
+      signed_out: "成功登出"
+
+    failure:
+      invalid: "Email 或密碼錯誤"
+
+    registrations:
+      signed_up: "註冊成功"
+      updated: "帳號資料更新成功"
+      destroyed: "帳號已刪除"
+
+    passwords:
+      send_instructions: "重設密碼信已寄出"
+      updated: "密碼已更新"
+
   products:
     quantity: "數量"
     add_to_cart: "加入購物車"

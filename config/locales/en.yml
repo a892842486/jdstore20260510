@@ -14,6 +14,23 @@ en:
     order_history: "Order History"
     logout: "Log Out"
 
+  devise:
+    sessions:
+      signed_in: "Signed in successfully"
+      signed_out: "Signed out successfully"
+
+    failure:
+      invalid: "Invalid email or password"
+
+    registrations:
+      signed_up: "Welcome! You have signed up successfully"
+      updated: "Your account has been updated successfully"
+      destroyed: "Your account has been deleted successfully"
+
+    passwords:
+      send_instructions: "You will receive reset password instructions shortly"
+      updated: "Your password has been changed successfully"
+
   products:
     quantity: "Quantity"
     add_to_cart: "Add to Cart"
