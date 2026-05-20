@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def admin_required
     unless current_user&.admin?
-      redirect_to root_path, alert: "You are not authorized."
+      redirect_to root_path, alert: t("flash.auth.not_authorized")
     end
   end
 

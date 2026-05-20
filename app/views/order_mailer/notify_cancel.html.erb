@@ -1,7 +1,7 @@
-<p>您好，<%= @user.email %></p>
+<p><%= t("order_mailer.greeting.user", email: @user.email) %></p>
 
 <p style="margin-bottom: 16px;">
-  您的訂單 <strong><%= @order.token %></strong> 已取消。
+  <%= t("order_mailer.notify_cancel.message_html", order_token: @order.token).html_safe %>
 </p>
 
 <%= render "order_mailer/order_detail", order: @order, product_lists: @product_lists %>

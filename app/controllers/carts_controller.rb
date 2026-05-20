@@ -5,7 +5,7 @@ class CartsController < ApplicationController
 
   def clean
     current_cart.clean!
-    flash[:warning] = "已清空購物車"
+    flash[:warning] = t("flash.carts.cleared")
      redirect_to carts_path
   end
 

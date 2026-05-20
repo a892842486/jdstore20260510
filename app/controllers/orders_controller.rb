@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
 
         # ✅ redirect（配合 to_param token）
         return redirect_to account_order_path(@order.token),
-               notice: "訂單已成立，確認信已寄出！"
+               notice: t("flash.orders.created")
       else
         raise ActiveRecord::Rollback
       end

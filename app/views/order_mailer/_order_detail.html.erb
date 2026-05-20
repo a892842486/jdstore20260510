@@ -1,19 +1,19 @@
 <h2 style="font-size: 20px; font-weight: bold; margin-bottom: 16px;">
-  訂單明細
+  <%= t("order_mailer.detail.title") %>
 </h2>
 
 <p style="margin-bottom: 16px;">
-  訂單連結：
-  <%= link_to "查看訂單", account_order_url(order), style: "color: #2563eb; text-decoration: underline;" %>
+  <%= t("order_mailer.detail.order_link") %>：
+  <%= link_to t("order_mailer.detail.view_order"), account_order_url(order), style: "color: #2563eb; text-decoration: underline;" %>
 </p>
 
 <table border="1" cellpadding="8" cellspacing="0" width="100%" style="border-collapse: collapse; margin-bottom: 16px;">
   <thead style="background-color: #f3f4f6;">
     <tr>
-      <th align="left">商品名稱</th>
-      <th align="left">單價</th>
-      <th align="left">數量</th>
-      <th align="left">小計</th>
+      <th align="left"><%= t("order_mailer.detail.product_name") %></th>
+      <th align="left"><%= t("order_mailer.detail.unit_price") %></th>
+      <th align="left"><%= t("order_mailer.detail.quantity") %></th>
+      <th align="left"><%= t("order_mailer.detail.subtotal") %></th>
     </tr>
   </thead>
 
@@ -21,28 +21,28 @@
     <% product_lists.each do |pl| %>
       <tr>
         <td><%= pl.product_name %></td>
-        <td><%= pl.product_price %> 元</td>
+        <td><%= pl.product_price %> <%= t("currency.unit") %></td>
         <td><%= pl.quantity %></td>
-        <td><%= pl.product_price.to_i * pl.quantity %> 元</td>
+        <td><%= pl.product_price.to_i * pl.quantity %> <%= t("currency.unit") %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <p style="text-align: right; font-weight: bold; margin-bottom: 16px;">
-  總計 <%= order.total_price %> 元
+  <%= t("order_mailer.detail.total") %> <%= order.total_price %> <%= t("currency.unit") %>
 </p>
 
 <hr style="margin: 24px 0;">
 
 <h3 style="font-size: 16px; font-weight: bold; margin-bottom: 12px;">
-  寄送資訊
+  <%= t("order_mailer.detail.shipping_info") %>
 </h3>
 
 <p style="margin-bottom: 8px;">
-  訂購人：<%= order.billing_name %> - <%= order.billing_address %>
+  <%= t("order_mailer.detail.billing_user") %>：<%= order.billing_name %> - <%= order.billing_address %>
 </p>
 
 <p>
-  收件人：<%= order.shipping_name %> - <%= order.shipping_address %>
+  <%= t("order_mailer.detail.shipping_user") %>：<%= order.shipping_name %> - <%= order.shipping_address %>
 </p>
