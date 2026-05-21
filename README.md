@@ -1,24 +1,59 @@
-# README
+# JDStore
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails 8 電商網站作品，
+支援商品瀏覽、購物車、訂單流程、
+AASM 訂單狀態管理與中英文切換。
 
-Things you may want to cover:
+---
 
-* Ruby version
+## Live Demo
 
-* System dependencies
+網站：
+https://jdstore20260510.onrender.com
 
-* Configuration
+GitHub：
+https://github.com/a892842486/jdstore20260510
 
-* Database creation
+---
 
-* Database initialization
+## Features
 
-* How to run the test suite
+### 使用者功能
+- 商品瀏覽
+- 購物車
+- 結帳流程
+- 多語系切換（中文 / English）
 
-* Services (job queues, cache servers, search engines, etc.)
+### 管理功能
+- 商品 CRUD
+- 圖片上傳
+- 訂單管理
+- AASM 訂單狀態流轉
 
-* Deployment instructions
+---
 
-* ...
+## Tech Stack
+
+- Ruby on Rails 8
+- PostgreSQL
+- Tailwind CSS
+- Devise
+- AASM
+- AWS S3
+- Render
+
+---
+
+## Screenshots
+
+(放圖片)
+
+---
+
+## Installation
+
+```bash
+git clone ...
+bundle install
+rails db:create
+rails db:migrate
