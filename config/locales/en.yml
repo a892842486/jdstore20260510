@@ -233,3 +233,9 @@ en:
 
   common:
     submitting: "Submitting..."
+
+  home:
+    hero:
+      tagline: "Collect • Explore • Enjoy"
+      title_html: "Explore Your <br> amiibo Collection"
+      button: "Shop Now"

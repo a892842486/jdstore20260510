@@ -41,7 +41,6 @@ zh-TW:
       subtitle: "將 amiibo 與主機連動，體驗更多遊戲互動樂趣"
       badge: "Rails 8 電商網站作品展示"
 
-
   carts:
     title: "購物車"
     clear: "清空購物車"
@@ -232,3 +231,9 @@ zh-TW:
 
   common:
     submitting: "送出中..."
+
+  home:
+    hero:
+      tagline: "收集 • 探索 • 享受"
+      title_html: "探索你的 <br> amiibo 收藏世界"
+      button: "立刻逛逛"

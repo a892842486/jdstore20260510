@@ -1,1 +1,31 @@
-<h1 class="text-2xl font-bold">Hello World!</h1>
+<div class="max-w-7xl mx-auto px-4 py-8">
+
+  <!-- Landing Hero -->
+  <div class="relative rounded-3xl overflow-hidden shadow-xl h-[500px]">
+
+    <%= image_tag "landing_banner.jpg",
+        class: "w-full h-full object-cover" %>
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black/45 flex items-center">
+
+      <div class="px-8 md:px-16 max-w-2xl">
+
+        <p class="text-red-400 text-sm font-semibold tracking-widest uppercase mb-3">
+          <%= t("home.hero.tagline") %>
+        </p>
+
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+          <%= t("home.hero.title_html").html_safe %>
+        </h1>
+
+        <%= link_to t("home.hero.button"),
+            products_path,
+            class: "inline-block bg-red-600 hover:bg-red-700 text-white text-lg font-semibold px-7 py-3 rounded-xl shadow-lg transition duration-300" %>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
