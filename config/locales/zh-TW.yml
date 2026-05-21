@@ -21,6 +21,7 @@ zh-TW:
 
     failure:
       invalid: "Email 或密碼錯誤"
+      unauthenticated: "請先登入才能繼續"
 
     registrations:
       signed_up: "註冊成功"

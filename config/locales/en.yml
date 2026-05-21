@@ -21,6 +21,7 @@ en:
 
     failure:
       invalid: "Invalid email or password"
+      unauthenticated: "You need to sign in before continuing."
 
     registrations:
       signed_up: "Welcome! You have signed up successfully"

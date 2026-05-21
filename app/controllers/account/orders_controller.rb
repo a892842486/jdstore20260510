@@ -16,7 +16,7 @@ class Account::OrdersController < ApplicationController
   end
 
   def pay_with_ewallet
-    process_payment("ewallet", ("flash.account.orders.paid_with_ewallet"))
+    process_payment("ewallet", t("flash.account.orders.paid_with_ewallet"))
   end
 
   def apply_to_cancel
