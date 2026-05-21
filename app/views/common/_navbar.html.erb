@@ -1,14 +1,17 @@
 <nav class="bg-white shadow">
   <div class="max-w-7xl mx-auto flex justify-between items-center">
-    <%= link_to root_path,
-        class: "bg-red-600 text-white px-6 py-4 text-xl font-bold flex items-center hover:bg-red-700 transition" do %>
+    <div class="flex items-center">
+      <%= link_to root_path,
+          class: "bg-red-600 text-white px-6 py-4 text-xl font-bold flex items-center hover:bg-red-700 transition" do %>
 
-      <span class="tracking-wide">
-        <%= t("navbar.brand") %>
-      </span>
-
-    <% end %>
-
+        <span class="tracking-wide">
+          <%= t("navbar.brand") %>
+        </span>
+      <% end %>
+      <%= link_to t("navbar.products") || t("navbar.products"),
+          products_path,
+          class: "ml-3 inline-flex items-center px-5 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition" %>
+    </div>
     <div class="flex items-center space-x-4">
       <div class="flex justify-end space-x-4">
           <% current_locale = I18n.locale %>
@@ -78,8 +81,6 @@
                       transition duration-150 z-50">
 
             <div class="bg-white border border-gray-200 rounded-lg shadow-lg">
-              <%= link_to t("navbar.products"), products_path,
-                  class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
               <% if current_user&.admin? %>
                 <%= link_to t("navbar.admin_products"), admin_products_path,
                     class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
