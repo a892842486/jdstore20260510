@@ -3,16 +3,21 @@
 Rails 8 電商網站作品，
 支援商品瀏覽、購物車、訂單流程、
 AASM 訂單狀態管理與中英文切換。
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/db7393b2-1b56-4282-8883-7b5091d0412c" />
+
+Admin:
+admin@test.com
+123456
 
 ---
 
 ## Live Demo
 
 網站：
-https://jdstore20260510.onrender.com
+[https://jdstore20260510.onrender.com](https://jdstore20260510.onrender.com/)
 
 GitHub：
-https://github.com/a892842486/jdstore20260510
+[https://github.com/a892842486/jdstore20260510](https://github.com/a892842486/jdstore20260510)
 
 ---
 
@@ -60,6 +65,10 @@ Shopping Cart
 Admin Dashboard
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4d316ff3-30f7-42e0-822a-1359e81abe0d" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ae0561e1-7a7c-405d-84b5-8717b575e725" />
+
+Login/Register
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0c20d6b4-4798-4379-a1b3-775f4089c73e" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/58c9843a-a640-4e94-81ee-854957c7f8d8" />
 
 
 ---
