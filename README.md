@@ -78,6 +78,8 @@ return → good_returned
 - PostgreSQL
 - Devise
 - AASM
+- Action Mailer
+- Active Storage
 
 ### Frontend
 - Tailwind CSS
@@ -89,6 +91,9 @@ return → good_returned
 ---
 
 ## Screenshots
+
+### Storefront
+
 Homepage
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/db7393b2-1b56-4282-8883-7b5091d0412c" />
 
@@ -103,19 +108,25 @@ Shopping Cart
 Checkout Page
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a1443cef-56ad-480e-a235-2739c0583047" />
 
-Order Page
+Order Detail
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4943769a-29f3-47a9-8672-9a88f0e8a4db" />
 
-Order Histroy
+Order History
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a09edd2e-4c56-4c43-a483-527e62b8fdfc" />
+
+### Admin Dashboard
 
 Admin Dashboard
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4d316ff3-30f7-42e0-822a-1359e81abe0d" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ae0561e1-7a7c-405d-84b5-8717b575e725" />
 
+### Authentication
+
 Login/Register
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0c20d6b4-4798-4379-a1b3-775f4089c73e" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/58c9843a-a640-4e94-81ee-854957c7f8d8" />
+
+### Additional Features
 
 Email Preview
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6586af2a-c2ca-4680-9caf-7046a7895727" />
