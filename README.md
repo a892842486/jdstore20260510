@@ -4,8 +4,7 @@
 訂單狀態機管理與後台管理系統。
 
 跟著 Xdite 全棧營教材從零開始建構，過程中學習 MVC 架構、
-Git 版控、Gem 整合與雲端部署，並在遇到 Bootstrap 與新版
-Rails 相容性問題時，改以 Tailwind CSS 解決。
+Git 版控、Gem 整合與雲端部署。
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/db7393b2-1b56-4282-8883-7b5091d0412c" />
 
@@ -82,6 +81,32 @@ stateDiagram-v2
 
 ---
 
+## Challenges & Learning
+
+### Bootstrap compatibility issue with Rails 8
+
+在專案初期曾嘗試使用 Bootstrap，
+但因 Rails 8 與部分套件版本整合問題，
+最終改以 Tailwind CSS 重構前端樣式。
+
+透過此過程學習：
+
+Rails asset pipeline
+CSS framework integration
+Tailwind utility-first workflow
+
+---
+
+Future Improvements
+串接金流（Stripe / 綠界）
+商品搜尋與分類篩選
+RSpec 測試
+Docker 化部署
+CI/CD workflow
+Redis / Sidekiq 背景工作
+
+---
+
 ## Screenshots
 
 ### Storefront
@@ -101,6 +126,8 @@ Checkout Page
 Order Detail
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4943769a-29f3-47a9-8672-9a88f0e8a4db" />
 
+<details>
+<summary>More Screenshots
 Order History
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a09edd2e-4c56-4c43-a483-527e62b8fdfc" />
 
@@ -123,7 +150,7 @@ Email Preview
 
 i18n Preview
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f998db8c-a36b-4fe3-9693-d314a7b7a93d" />
-
+</summary>
 ---
 
 ## ⚙️ Installation
@@ -141,6 +168,14 @@ git clone git@github.com:a892842486/jdstore20260510.git
 cd jdstore20260510/jdstore
 bundle install
 ```
+
+### Environment Variables
+```bash
+cp .env.example .env
+```
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_BUCKET=
 
 ### 啟動
 
