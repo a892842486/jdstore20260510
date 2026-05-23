@@ -1,92 +1,80 @@
 # 任天堂 amiibo 專賣（Demo）
 
-Rails 8 電商網站作品，
-支援商品瀏覽、購物車、訂單流程、
-AASM 訂單狀態管理與中英文切換。
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/db7393b2-1b56-4282-8883-7b5091d0412c" />
+以 Ruby on Rails 8 實作的全端電商網站，涵蓋完整購物流程、訂單狀態機管理與後台管理系統。
+以 amiibo 商品為題材，練習從需求拆解到部署上線的完整開發流程。
 
-## Demo Account
-Admin:
-- Email: admin@test.com
-- Password: 123456
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/db7393b2-1b56-4282-8883-7b5091d0412c" />
 
 ---
 
-## Live Demo
+## 🔗 Links
 
-網站：
-[https://jdstore20260510.onrender.com](https://jdstore20260510.onrender.com/)
+| | |
+|---|---|
+| 🌐 Live Demo | [jdstore20260510.onrender.com](https://jdstore20260510.onrender.com/) |
+| 📁 GitHub | [github.com/a892842486/jdstore20260510](https://github.com/a892842486/jdstore20260510) |
 
-GitHub：
-[https://github.com/a892842486/jdstore20260510](https://github.com/a892842486/jdstore20260510)
+> ⚠️ 部署於 Render 免費方案，首次開啟可能需要等待約 30 秒啟動。
+
+## 🔑 Demo Account
+
+| 角色 | Email | Password |
+|------|-------|----------|
+| Admin | admin@test.com | 123456 |
 
 ---
 
 ## Features
 
-### Storefront（前台功能）
-
-- 首頁（Landing Page）
-- 商品列表頁（Product Listing）
-- 商品詳情頁（Product Detail）
-- 購物車功能
-- 結帳流程
-- 訂單建立與查看
+### Storefront（前台）
+- 商品列表、詳情瀏覽
+- 購物車管理（新增、修改數量、刪除）
+- 結帳與訂單建立流程
+- 訂單狀態追蹤與歷史查詢
 - 使用者註冊 / 登入（Devise）
-- Email 訂單通知
+- Email 訂單通知（下單、出貨、取消）
 - 中英文 i18n 多語系切換
 
-### Admin Dashboard（後台功能）
-
-- 商品管理（新增 / 編輯 / 刪除）
-- 商品圖片上傳（AWS S3）
-- 後台商品列表
-- 後台訂單列表
-- 訂單狀態管理（AASM）
+### Admin Dashboard（後台）
+- 商品 CRUD（含圖片上傳至 AWS S3）
+- 訂單列表管理
+- 訂單狀態流轉操作（付款確認、出貨、取消）
 
 ### Email Notifications（寄信通知）
-
 使用 Action Mailer 實作：
-
 - 下單通知信
 - 出貨通知信
 - 訂單取消通知
 - 管理員取消申請通知
-
 支援訂單資訊與 i18n 多語系信件標題。
 
-### Order Workflow（AASM）
+### Order State Machine（AASM）
 
-使用 AASM 管理訂單狀態流轉：
+使用 AASM 實作訂單狀態管理，確保狀態流轉的合法性與業務邏輯一致性。
 
-order_placed → paid → shipping → shipped
-
-Additional flows:
-cancel → order_cancelled
-return → good_returned
-
-支援訂單付款、出貨、取消與退貨流程。
-
-使用 AASM 管理訂單狀態流轉與商業邏輯。
+```mermaid
+stateDiagram-v2
+    [*] --> order_placed : 建立訂單
+    order_placed --> paid : 付款確認
+    paid --> shipping : 開始出貨
+    shipping --> shipped : 出貨完成
+    order_placed --> order_cancelled : 取消
+    paid --> order_cancelled : 取消
+    shipped --> good_returned : 退貨
+```
 
 ---
 
 ## Tech Stack
-
-### Backend
-- Ruby on Rails 8
-- PostgreSQL
-- Devise
-- AASM
-- Action Mailer
-- Active Storage
-
-### Frontend
-- Tailwind CSS
-
-### Cloud / Deployment
-- AWS S3
-- Render
+| 分類 | 技術 |
+|------|------|
+| Backend | Ruby on Rails 8、PostgreSQL |
+| 認證 | Devise |
+| 狀態機 | AASM |
+| 信件 | Action Mailer |
+| 檔案儲存 | Active Storage + AWS S3 |
+| Frontend | Tailwind CSS |
+| 部署 | Render |
 
 ---
 
@@ -97,10 +85,8 @@ return → good_returned
 Homepage
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/db7393b2-1b56-4282-8883-7b5091d0412c" />
 
-
 Product Page
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e361614c-b053-4bb2-939f-48081d0d2c02" />
-
 
 Shopping Cart
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/13dfc00e-a3d5-4ed5-83f2-efd80b2b8ac8" />
@@ -134,20 +120,29 @@ Email Preview
 i18n Preview
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f998db8c-a36b-4fe3-9693-d314a7b7a93d" />
 
-
 ---
 
-## Installation
+## ⚙️ Installation
+
+### 環境需求
+
+- Ruby 3.x（建議 3.2+）
+- PostgreSQL
+- Node.js（Tailwind CSS 編譯用）
+
+### 步驟
 
 ```bash
 git clone git@github.com:a892842486/jdstore20260510.git
-
-cd jdstore20260510
-cd jdstore
-
+cd jdstore20260510/jdstore
 bundle install
-
-rails db:create
-rails db:migrate
-rails db:seed
 ```
+
+### 啟動
+
+```bash
+rails db:create db:migrate db:seed
+rails server
+```
+
+開啟 [http://localhost:3000](http://localhost:3000)
