@@ -1,10 +1,13 @@
 # 任天堂 amiibo 專賣（Demo）
 
-以 Ruby on Rails 8 實作的全端電商網站，涵蓋完整購物流程、
-訂單狀態機管理與後台管理系統。
+以 Ruby on Rails 8 開發的全端電商網站，
+包含商品瀏覽、購物車、訂單管理與後台功能。
 
-跟著 Xdite 全棧營教材從零開始建構，過程中遇到 Bootstrap 與
-Rails 8 相容性問題，改以 Tailwind CSS 解決，完成從開發到部署的完整流程。
+專案實作 Devise 驗證、AASM 訂單狀態機、
+AWS S3 圖片儲存、Action Mailer 與 i18n 多語系切換。
+
+開發過程中曾遇到 Bootstrap 與 Rails 8 相容性問題，
+最終改以 Tailwind CSS 重構前端並完成部署。
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/db7393b2-1b56-4282-8883-7b5091d0412c" />
 
@@ -21,9 +24,10 @@ Rails 8 相容性問題，改以 Tailwind CSS 解決，完成從開發到部署�
 
 ## 🔑 Demo Account
 
-| 角色 | Email | Password |
-|------|-------|----------|
-| Admin | admin@test.com | 123456 |
+| 角色  | Email          | Password |
+|-------|----------------|----------|
+| Admin | admin@test.com | 123456   |
+| User  | user@test.com  | 123456   |
 
 ---
 
